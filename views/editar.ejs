@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06/04/2020</title>
+</head>
+<body>
+    <h1>Página de edição</h1>
+    <form action="/editar/<%= usuario._id %> " method="POST">
+        <label for="nome">Nome:</label><br>
+        <input required type="text" name="nome" value="<%= usuario.nome %> "><br><br>
+        <label for="cargo">Cargo:</label><br>
+        <input required type="text" name="cargo" value="<%= usuario.cargo %> "><br><br>
+        <label for="digitos">Dígitos:</label><br>
+        <input required type="text" name="digitos" value="<%= usuario.digitos %> "><br><br>
+        <button type="submit">Alterar</button>
+    </form>
+   
+</body>
+</html>
