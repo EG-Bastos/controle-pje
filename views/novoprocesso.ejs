@@ -12,15 +12,18 @@
         <label for="numero">Número:</label>
         <input type="text" name="numero" id="numero" required><br>
         Classe: <br>
-        <input type="radio" id="usucapiao" name="classe" value="Usucapião">
-        <label for="usucapiao">Usucapião</label><br>
-        <input type="radio" id="inventario" name="classe" value="Inventário">
-        <label for="inventario">Inventário</label><br>
-        <input type="radio" id="acp" name="classe" value="Ação Civil Pública">
-        <label for="acp">Ação Civil Pública</label><br>
-        <input type="radio" id="outros" name="classe" value="Outros">
-        <label for="outros">Outros</label><br>
+
+        <select id="seletor" name="classe" required a>
+            <option value=>Escolha</option>
+            <option value="Usucapião">Usucapião</option>
+            <option value="Inventário">Inventário</option>
+            <option value="Ação Civil Pública">Ação Civil Pública</option>
+            <option value="Outros">Outros</option>
+          </select> 
         <button type="submit">Enviar Processo</button>
+      </form><br><br><br><br>
+      <form action="processos" method="GET">
+          <button type="submit">Voltar</button>
       </form>
 
 

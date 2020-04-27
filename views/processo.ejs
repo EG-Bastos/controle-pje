@@ -9,10 +9,14 @@
 <body>
     <div class="container">
         <div class="principal">
+            <form action="/urg/<%= processo.id %> " method="POST">
+                <button type="submit">Alterar Urgência</button>
+            </form>
+            
             <ul>
-                <li>Número: <%= processo.numero %></li>
+                <li class="urge">Urgente: <span><%= processo.urgencia %> </span></li><br>
+                <li class="urge">Número: <%= processo.numero %></li>
                 <li>Classe: <%= processo.classe %></li>
-                <li>Todos citados: <span><%= processo.todosCitados %> </span></li>
                 <li>Réus: 
                     <ul class="reus">
                         <% processo.reus.forEach(element => { %>
@@ -26,7 +30,7 @@
                                 </form>
                                 <form action="/excluireu/<%= processo.id %>/<%= element.nome %>" method="POST">
                                     <button type="submit">Excluir réu</button>
-                                </form>
+                                </form><br>
                             </li>
                          
                         <% }) %>
@@ -55,10 +59,10 @@
             <div class="aviso">Importante:</div>
                 <ul class="notas">
                      <% processo.obs.forEach(element => { %>
-                      <li>
+                      <li class="urge">
                           <%= element.nota %> 
                           <form action="/excluinota/<%= processo.id %>/<%= element.obsid %>   " method="POST">
-                            <button type="submit">Apagar anotação</button>
+                            <button type="submit">Apagar anotação</button><hr>
                         </form>
                       </li>
                      <% }) %>
@@ -71,7 +75,11 @@
             <form action="/processos" class="todos"> 
                 <button type="submit">Ver todos os processos</button>
             </form>
+            <form action="/urgentes" class="todos"> 
+                <button type="submit">Ver os urgentes</button>
+            </form>
         </div>
     </div>
+    <script src="/js/scripts.js"></script>
 </body>
 </html>

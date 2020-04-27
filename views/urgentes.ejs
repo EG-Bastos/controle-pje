@@ -11,11 +11,11 @@
         <form action="/novoprocesso" method="GET">
             <button type="submit">Incluir novo processo</button>
         </form><br>
-        <form action="/urgentes" method="GET">
-            <button type="submit">VER SÓ OS URGENTES</button>
+        <form action="/processos" method="GET">
+            <button type="submit">VER TODOS</button>
         </form><br>
         
-        <% processos.forEach(element => { %>
+        <% urgentes.forEach(element => { %>
     
             <div class="urge">Número: <%= element.numero %></div>
             Classe: <%= element.classe %><br>

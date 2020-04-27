@@ -12,7 +12,7 @@ router.post('/novoprocesso', async (req, res) => {
     const processo = new Processo({
         numero: req.body.numero,
         classe: req.body.classe,
-        todosCitados: 'Incluir réus',
+        urgencia: 'NÃO',
         reus: [],
         faltaCitar: []
     })
@@ -84,7 +84,22 @@ router.post('/obs/:id', async (req, res) => {
 router.post('/excluinota/:id/:obsid', async (req, res) => {
     await Processo.updateOne({_id: req.params.id}, {$pull: {obs: {obsid: req.params.obsid}}})
     res.redirect(`/processo/${req.params.id}`)
-    console.log(req.params)
+})
+
+router.post('/urg/:id', async (req, res) => {
+    const processo = await Processo.findById(req.params.id)
+    const urgencia = processo.urgencia
+    if (urgencia === 'NÃO') {
+        await Processo.updateOne({_id: req.params.id}, {$set: {urgencia: 'SIM'}})
+    } else if (urgencia === 'SIM') {
+        await Processo.updateOne({_id: req.params.id}, {$set: {urgencia: 'NÃO'}})
+    }
+    res.redirect(`/processo/${req.params.id}`)
+})
+
+router.get('/urgentes', async (req, res) => {
+    const urgentes = await Processo.find({urgencia: "SIM"})
+    res.render('urgentes', {urgentes: urgentes})
 })
 
 module.exports = router
