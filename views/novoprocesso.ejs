@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle-PJe</title>
+</head>
+<body>
+    <h1>Incluir novo processo:</h1>
+
+    <form action="/novoprocesso" method="post">
+        <label for="numero">Número:</label>
+        <input type="text" name="numero" id="numero" required><br>
+        Classe: <br>
+        <input type="radio" id="usucapiao" name="classe" value="Usucapião">
+        <label for="usucapiao">Usucapião</label><br>
+        <input type="radio" id="inventario" name="classe" value="Inventário">
+        <label for="inventario">Inventário</label><br>
+        <input type="radio" id="acp" name="classe" value="Ação Civil Pública">
+        <label for="acp">Ação Civil Pública</label><br>
+        <input type="radio" id="outros" name="classe" value="Outros">
+        <label for="outros">Outros</label><br>
+        <button type="submit">Enviar Processo</button>
+      </form>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle-PJe</title>
+</head>
+<body>
+
+    <form action="/novoprocesso">
+        <button type="submit">Incluir novo processo</button>
+    </form><br>
+    
+    <% processos.forEach(element => { %>
+
+        Número: <%= element.numero %><br>
+        Classe: <%= element.classe %><br>
+        <form action="/processo/<%= element._id %> " method="GET">
+            <button>Ver dados completos</button>
+        </form><br><br><hr>
+     
+    <% }) %>
+  
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle-PJe</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="principal">
+            <ul>
+                <li>Número: <%= processo.numero %></li>
+                <li>Classe: <%= processo.classe %></li>
+                <li>Todos citados: <span><%= processo.todosCitados %> </span></li>
+                <li>Réus: 
+                    <ul class="reus">
+                        <% processo.reus.forEach(element => { %>
+        
+                            <li> <span class="reu"><%= element.nome %></span>  <br> Citado: <%= element.citado %> 
+                                <form action="/citacao/<%= processo.id %>/<%= element.nome %>  " method="POST">
+                                    <button type="submit">Registrar citação</button>
+                                </form>
+                                <form action="/cancelacitacao/<%= processo.id %>/<%= element.nome %>  " method="POST">
+                                    <button type="submit">Cancelar citação</button>
+                                </form>
+                                <form action="/excluireu/<%= processo.id %>/<%= element.nome %>" method="POST">
+                                    <button type="submit">Excluir réu</button>
+                                </form>
+                            </li>
+                         
+                        <% }) %>
+                    </ul>
+                        <form action="/novoreu/<%= processo.id %>" method="POST">
+                            <input type="text" name="reu" id="reu" required>
+                            <button type="submit">Incluir réu</button>
+                        </form>               
+                </li>
+            </ul>
+        </div>
+        
+        <div class="pendencias">
+
+            <div>Pendências:</div> 
+            <ul class="pendencias">
+                <% processo.faltaCitar.forEach(element => { %>
+    
+                    <li><%= element %> </li>
+                 
+                <% }) %>
+            </ul>
+        </div>
+    
+        <div class="obs">
+            <div class="aviso">Importante:</div>
+                <ul class="notas">
+                     <% processo.obs.forEach(element => { %>
+                      <li>
+                          <%= element.nota %> 
+                          <form action="/excluinota/<%= processo.id %>/<%= element.obsid %>   " method="POST">
+                            <button type="submit">Apagar anotação</button>
+                        </form>
+                      </li>
+                     <% }) %>
+                </ul>
+
+            <form action="/obs/<%= processo.id %>  ", method="POST" class="campo">
+                <textarea name="nota" id="nota" cols="30" rows="10" required></textarea>
+                <button type="submit">Incluir anotação</button>
+            </form><br><br>
+            <form action="/processos" class="todos"> 
+                <button type="submit">Ver todos os processos</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

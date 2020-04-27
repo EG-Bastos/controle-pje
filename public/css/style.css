@@ -1,0 +1,27 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+pri
+
+.reu {
+    font-weight: bolder;
+}
+
+.obs {
+    display: block;
+}
+
+.campo {
+    margin-top: 25px;
+}
+
+.cont {
+    margin-top: 25px;
+    font-weight: bolder;
+}
+
+button {
+    background: rgb(209, 209, 209);
+}
